@@ -1,4 +1,4 @@
-# Awilix Demo - Inyección de Dependencias con TypeScript
+# Boiler Node, Express, Typescript, Awilix, Router
 
 Este proyecto es una demostración de cómo implementar la inyección de dependencias (DI) utilizando Awilix, Express y TypeScript en una aplicación Node.js.
 
