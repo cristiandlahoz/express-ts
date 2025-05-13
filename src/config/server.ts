@@ -3,7 +3,7 @@ import http from "http";
 import { Router } from "express";
 import { ContainerRegistry } from "./di/container-registy";
 import { registerRoutes } from "./routes/router-registry";
-
+import { errorHandler } from "./middlewares/error.middleware";
 export class Server {
   private express: express.Express;
   private appName: string;
@@ -48,6 +48,15 @@ export class Server {
     const router = Router();
     await registerRoutes(router);
     this.express.use(this.basePath, router);
+    this.express.use((req, res, next) => {
+      res.status(404).json({
+        message: 'Not Found',
+        status: 404,
+        timestamp: new Date().toISOString(),
+        path: req.url
+      });
+    });
+    this.express.use(errorHandler);
   }
 
   private async initialize(): Promise<void> {
