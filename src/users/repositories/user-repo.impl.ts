@@ -1,5 +1,5 @@
-import { NotFoundException } from "../../config/exceptions/not-found.exception";
-import { User, UserRepository } from "../interfaces";
+import { NotFoundException } from "@/config/exceptions/not-found.exception";
+import { User, UserRepository } from "@/users/interfaces";
 
 export class UserRepositoryImpl implements UserRepository {
   private users: User[] = [

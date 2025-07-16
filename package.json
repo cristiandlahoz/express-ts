@@ -4,9 +4,9 @@
   "description": "Demo de inyección de dependencias con Awilix",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn src/index.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn src/index.ts"
   },
   "keywords": [
     "awilix",
@@ -27,6 +27,8 @@
     "@types/express": "^4.17.17",
     "@types/node": "^20.5.0",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
   }
 }

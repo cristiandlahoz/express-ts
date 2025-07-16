@@ -1,8 +1,8 @@
 import { asClass } from "awilix"
 import { AwilixContainer } from "awilix"
-import { UserRepositoryImpl } from "./repositories/user-repo.impl"
-import { UserServiceImpl } from "./services/user.service"
-import { UserController } from "./controllers/user.controller"
+import { UserRepositoryImpl } from "@/users/repositories/user-repo.impl"
+import { UserServiceImpl } from "@/users/services/user.service"
+import { UserController } from "@/users/controllers/user.controller"
 
 export const register = (container: AwilixContainer) => {
   container.register({

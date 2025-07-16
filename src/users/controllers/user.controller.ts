@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserService } from "../interfaces";
+import { UserService } from "@/users/interfaces";
 
 export class UserController {
   constructor(private userService: UserService) { }

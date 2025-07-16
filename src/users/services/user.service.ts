@@ -1,4 +1,4 @@
-import { User, UserRepository, UserService } from "../interfaces";
+import { User, UserRepository, UserService } from "@/users/interfaces";
 
 export class UserServiceImpl implements UserService {
   constructor(private userRepository: UserRepository) { }

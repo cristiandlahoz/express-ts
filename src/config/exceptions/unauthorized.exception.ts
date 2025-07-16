@@ -1,4 +1,4 @@
-import { BaseException } from './base.exception';
+import { BaseException } from '@/config/exceptions/base.exception';
 
 export class UnauthorizedException extends BaseException {
   constructor(message: string = 'No autorizado') {

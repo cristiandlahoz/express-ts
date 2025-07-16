@@ -1,9 +1,9 @@
 import express from "express";
 import http from "http";
 import { Router } from "express";
-import { ContainerRegistry } from "./di/container-registy";
-import { registerRoutes } from "./routes/router-registry";
-import { errorHandler } from "./middlewares/error.middleware";
+import { ContainerRegistry } from "@/config/di/container-registy";
+import { registerRoutes } from "@/config/routes/router-registry";
+import { errorHandler } from "@/config/middlewares/error.middleware";
 export class Server {
   private express: express.Express;
   private appName: string;
