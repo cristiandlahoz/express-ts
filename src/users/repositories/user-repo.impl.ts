@@ -1,4 +1,3 @@
-import { NotFoundException } from "@/config/exceptions/not-found.exception";
 import { User, UserRepository } from "@/users/interfaces";
 
 export class UserRepositoryImpl implements UserRepository {
@@ -25,7 +24,7 @@ export class UserRepositoryImpl implements UserRepository {
   findByEmail(email: string): Promise<User | null> {
     const user = this.users.find((user) => user.email === email);
     if (!user) {
-      throw new NotFoundException('Usuario no encontrado');
+      return Promise.resolve(null);
     }
     return Promise.resolve(user);
   }
@@ -36,7 +35,7 @@ export class UserRepositoryImpl implements UserRepository {
   async findById(id: string): Promise<User | null> {
     const user = this.users.find((user) => user.id === id);
     if (!user) {
-      throw new NotFoundException('Usuario no encontrado');
+      return Promise.resolve(null);
     }
     return Promise.resolve(user);
   }

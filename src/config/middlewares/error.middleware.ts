@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { BaseException } from '@/config/exceptions/base.exception';
+import Boom from '@hapi/boom';
 
 export const errorHandler = (
   error: Error,
@@ -7,20 +7,18 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  if (error instanceof BaseException) {
-    return res.status(error.statusCode).json({
-      status: 'error',
-      code: error.code,
-      message: error.message,
+  if (Boom.isBoom(error)) {
+    return res.status(error.output.statusCode).json({
+      ...error.output.payload,
       timestamp: new Date().toISOString(),
       path: req.path
     });
   }
 
-  return res.status(500).json({
-    status: 'error',
-    code: 'INTERNAL_SERVER_ERROR',
-    message: 'Error interno del servidor',
+  // Error no controlado
+  const boomError = Boom.internal('Error interno del servidor');
+  return res.status(boomError.output.statusCode).json({
+    ...boomError.output.payload,
     timestamp: new Date().toISOString(),
     path: req.path
   });
